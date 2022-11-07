@@ -1,3 +1,6 @@
+import { Route, Routes } from 'react-router-dom';
+import { NavMenu } from './App.styled';
+
 export const App = () => {
   return (
     <div
@@ -7,10 +10,12 @@ export const App = () => {
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,
-        color: '#010101'
+        color: '#010101',
       }}
     >
-      React homework template
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+      </Routes>
     </div>
   );
 };
