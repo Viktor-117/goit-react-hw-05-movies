@@ -18,7 +18,7 @@ import {
 } from './MovieDetails.styled';
 
 export default function MovieDetails() {
-  const [movie, setMovie] = useState(undefined);
+  const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const params = useParams();
@@ -32,7 +32,7 @@ export default function MovieDetails() {
       await axios
         .get(url)
         .then(res => {
-          console.log(res.data);
+          //   console.log(res.data);
           setMovie(res.data);
           setIsLoading(false);
         })
@@ -61,14 +61,7 @@ export default function MovieDetails() {
             <Title2>Overview</Title2>
             <Text>{movie.overview}</Text>
             <Title3>Genres</Title3>
-            <Text>
-              {movie.genres
-                .map(genre => {
-                  console.log(genre);
-                  return genre.name;
-                })
-                .join(', ')}
-            </Text>
+            <Text>{movie.genres.map(genre => genre.name).join(', ')}</Text>
           </InfoBox>
         </Thumb>
       )}

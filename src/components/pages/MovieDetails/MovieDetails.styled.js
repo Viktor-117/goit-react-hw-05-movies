@@ -31,7 +31,7 @@ export const Title = styled.div`
   font-weight: 700;
 `;
 
-export const Text = styled.div`
+export const Text = styled.p`
   margin-top: 10px;
   padding-right: 30px;
 `;
