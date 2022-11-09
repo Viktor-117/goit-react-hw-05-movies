@@ -3,16 +3,16 @@ import { useEffect, useState } from 'react';
 import { useParams, Outlet } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 import { KEY } from '../service/api';
-import { CreditsList, Text, Photo } from './Cast.styled';
+import { Box, Text, Title, ListItem } from './Reviews.styled';
 
-export default function Cast() {
-  const [credits, setCredits] = useState(null);
+export default function Reviews() {
+  const [reviews, setReviews] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const params = useParams();
 
   useEffect(() => {
-    const url = `/movie/${params.movieId}/credits?api_key=${KEY}`;
+    const url = `/movie/${params.movieId}/reviews?api_key=${KEY}`;
     setIsLoading(true);
     response();
 
@@ -20,8 +20,8 @@ export default function Cast() {
       await axios
         .get(url)
         .then(res => {
-          console.log(res.data.cast);
-          setCredits(res.data.cast);
+          console.log(res.data.results);
+          setReviews(res.data.results);
           setIsLoading(false);
         })
         .catch(error => {
@@ -34,22 +34,18 @@ export default function Cast() {
     <div>
       {isLoading && <RotatingLines strokeColor="#4A9E48" />}
       {error && <p>Ooops! Something went wrong. Please, try again</p>}
-      {credits && (
-        <CreditsList>
-          {credits.map(({ profile_path, name, character, id }) => {
-            return (
-              <li key={id}>
-                <Photo
-                  src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${profile_path}`}
-                  alt={name}
-                />
-                <Text>{name}</Text>
-                <Text>Character: {character}</Text>
-              </li>
-            );
-          })}
-        </CreditsList>
-      )}
+      <Box>
+        {reviews.length > 0 ? (
+          reviews.map(({ author, id, content }) => (
+            <ListItem key={id}>
+              <Title>Author: {author}</Title>
+              <Text>{content}</Text>
+            </ListItem>
+          ))
+        ) : (
+          <Text>We don't have any reviews for this movie.</Text>
+        )}
+      </Box>
     </div>
   );
 }
