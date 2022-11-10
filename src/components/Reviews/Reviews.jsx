@@ -6,7 +6,7 @@ import { KEY } from '../service/api';
 import { Box, Text, Title, ListItem } from './Reviews.styled';
 
 export default function Reviews() {
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const params = useParams();
@@ -35,7 +35,7 @@ export default function Reviews() {
       {isLoading && <RotatingLines strokeColor="#4A9E48" />}
       {error && <p>Ooops! Something went wrong. Please, try again</p>}
       <Box>
-        {reviews.length > 0 ? (
+        {reviews.length !== 0 ? (
           reviews.map(({ author, id, content }) => (
             <ListItem key={id}>
               <Title>Author: {author}</Title>
