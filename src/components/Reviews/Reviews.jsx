@@ -9,10 +9,10 @@ export default function Reviews() {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const params = useParams();
+  const { movieId } = useParams();
 
   useEffect(() => {
-    const url = `/movie/${params.movieId}/reviews?api_key=${KEY}`;
+    const url = `/movie/${movieId}/reviews?api_key=${KEY}`;
     setIsLoading(true);
     response();
 

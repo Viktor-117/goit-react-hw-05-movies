@@ -9,10 +9,10 @@ export default function Cast() {
   const [credits, setCredits] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const params = useParams();
+  const { movieId } = useParams();
 
   useEffect(() => {
-    const url = `/movie/${params.movieId}/credits?api_key=${KEY}`;
+    const url = `/movie/${movieId}/credits?api_key=${KEY}`;
     setIsLoading(true);
     response();
 
@@ -29,6 +29,10 @@ export default function Cast() {
         });
     }
   }, []);
+
+  if (!credits) {
+    return null;
+  }
 
   return (
     <div>

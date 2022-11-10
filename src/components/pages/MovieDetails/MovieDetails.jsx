@@ -21,10 +21,10 @@ export default function MovieDetails() {
   const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const params = useParams();
+  const { movieId } = useParams();
 
   useEffect(() => {
-    const url = `/movie/${params.movieId}?api_key=${KEY}`;
+    const url = `/movie/${movieId}?api_key=${KEY}`;
     setIsLoading(true);
     response();
 
@@ -42,6 +42,12 @@ export default function MovieDetails() {
     }
   }, []);
 
+  if (!movie) {
+    return null;
+  }
+
+  const { poster_path, title, vote_average, overview, genres } = movie;
+
   return (
     <div>
       <ReturnBtn to={'/'} key={'/'}>
@@ -52,16 +58,16 @@ export default function MovieDetails() {
       {movie && (
         <Thumb>
           <Poster
-            src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${movie.poster_path}`}
-            alt={movie.title}
+            src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${poster_path}`}
+            alt={title}
           />
           <InfoBox>
-            <Title>{movie.title}</Title>
-            <Text>User score: {movie.vote_average}</Text>
+            <Title>{title}</Title>
+            <Text>User score: {vote_average}</Text>
             <Title2>Overview</Title2>
-            <Text>{movie.overview}</Text>
+            <Text>{overview}</Text>
             <Title3>Genres</Title3>
-            <Text>{movie.genres.map(genre => genre.name).join(', ')}</Text>
+            <Text>{genres.map(genre => genre.name).join(', ')}</Text>
           </InfoBox>
         </Thumb>
       )}
