@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Home from './Home';
-import Movies from './Movies';
+import Movies from './pages/Movies';
 import MovieDetails from './pages/MovieDetails';
 import Trending from './pages/Trending';
 import Cast from './Cast';
@@ -29,6 +30,7 @@ export const App = () => {
           {/* <Route path="home" element={<Home />} /> */}
         </Route>
       </Routes>
+      <ToastContainer autoClose={3000} theme="colored" />
     </div>
   );
 };

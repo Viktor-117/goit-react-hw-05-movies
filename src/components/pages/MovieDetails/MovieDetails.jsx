@@ -32,7 +32,7 @@ export default function MovieDetails() {
       await axios
         .get(url)
         .then(res => {
-          //   console.log(res.data);
+          console.log(res.data);
           setMovie(res.data);
           setIsLoading(false);
         })

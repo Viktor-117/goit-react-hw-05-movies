@@ -8,6 +8,7 @@ export const Box = styled.ul`
 
 export const Text = styled.p`
   margin-top: 10px;
+  margin-bottom: 20px;
   padding-right: 30px;
 `;
 
