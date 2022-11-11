@@ -9,7 +9,7 @@ import {
   MoviesList,
   StyledLink,
 } from './Movies.styled';
-import { KEY } from '../../service/api';
+import { KEY } from '../../components/service/api';
 
 export default function Movies() {
   const [value, setValue] = useState('');

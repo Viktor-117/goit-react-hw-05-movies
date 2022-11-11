@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
 import { PopularMoviesList, StyledLink, Title } from './Trending.styled';
-import { KEY } from '../../service/api';
+import { KEY } from '../../components/service/api';
 
 export default function Trending() {
   const [movies, setMovies] = useState([]);
@@ -27,6 +27,7 @@ export default function Trending() {
         });
     }
   }, []);
+
   return (
     <div>
       <Title>Trending today</Title>

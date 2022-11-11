@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useParams, Outlet } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 import { KEY } from '../service/api';
 import { CreditsList, Text, Photo } from './Cast.styled';

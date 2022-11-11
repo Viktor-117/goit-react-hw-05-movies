@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams, Outlet } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
-import { KEY } from '../../service/api';
+import { KEY } from '../../components/service/api';
 import {
   ReturnBtn,
   Thumb,
@@ -40,7 +40,7 @@ export default function MovieDetails() {
           setError(error.message);
         });
     }
-  }, []);
+  }, [movieId]);
 
   if (!movie) {
     return null;
