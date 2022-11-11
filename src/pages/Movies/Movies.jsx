@@ -12,12 +12,6 @@ import {
 } from './Movies.styled';
 import { KEY } from '../../components/service/api';
 
-// const error = () => {
-//   toast.error('Error');
-// };
-
-// error();
-
 export default function Movies() {
   const [value, setValue] = useState('');
   const [movies, setMovies] = useState([]);
@@ -39,7 +33,6 @@ export default function Movies() {
       await axios
         .get(url)
         .then(res => {
-          console.log(res.data.results);
           setMovies(res.data.results);
           setIsLoading(false);
         })

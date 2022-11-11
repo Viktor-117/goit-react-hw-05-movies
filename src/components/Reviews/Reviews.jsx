@@ -20,7 +20,6 @@ export default function Reviews() {
       await axios
         .get(url)
         .then(res => {
-          console.log(res.data.results);
           setReviews(res.data.results);
           setIsLoading(false);
         })
@@ -28,6 +27,7 @@ export default function Reviews() {
           setError(error.message);
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

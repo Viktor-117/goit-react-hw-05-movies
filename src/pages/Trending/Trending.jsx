@@ -20,7 +20,6 @@ export default function Trending() {
       await axios
         .get(url)
         .then(res => {
-          console.log(res.data.results);
           setMovies(res.data.results);
           setIsLoading(false);
         })

@@ -20,7 +20,6 @@ export default function Cast() {
       await axios
         .get(url)
         .then(res => {
-          console.log(res.data.cast);
           setCredits(res.data.cast);
           setIsLoading(false);
         })
@@ -28,6 +27,7 @@ export default function Cast() {
           setError(error.message);
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!credits) {
