@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Home from './Home';
 import Movies from '../pages/Movies';
 import MovieDetails from '../pages/MovieDetails';
@@ -12,7 +13,7 @@ export const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<Home />}>
-          <Route path="/" element={<Trending />} />
+          <Route index element={<Trending />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/movies/:movieId" element={<MovieDetails />}>
             <Route path="cast" element={<Cast />} />

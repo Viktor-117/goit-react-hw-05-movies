@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useParams, Outlet } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 import { KEY } from '../../components/service/api';
 import {
@@ -19,6 +19,7 @@ import {
 
 export default function MovieDetails() {
   const [movie, setMovie] = useState(null);
+  const [location] = useState(useLocation());
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const { movieId } = useParams();
@@ -47,12 +48,11 @@ export default function MovieDetails() {
   }
 
   const { poster_path, title, vote_average, overview, genres } = movie;
+  const backLinkHref = location.state?.from ?? '/';
 
   return (
     <div>
-      <ReturnBtn to={'/'} key={'/'}>
-        Go back
-      </ReturnBtn>
+      <ReturnBtn to={backLinkHref}>Go back</ReturnBtn>
       {isLoading && <RotatingLines strokeColor="#4A9E48" />}
       {error && <p>Ooops! Something went wrong. Please, try again</p>}
       {movie && (

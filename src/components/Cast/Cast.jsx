@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 import { KEY } from '../service/api';
-import { CreditsList, Text, Photo } from './Cast.styled';
+import { CreditsList, Text, Photo, ListItem } from './Cast.styled';
 
 export default function Cast() {
   const [credits, setCredits] = useState(null);
@@ -42,7 +42,7 @@ export default function Cast() {
         <CreditsList>
           {credits.map(({ profile_path, name, character, id }) => {
             return (
-              <li key={id}>
+              <ListItem key={id}>
                 <Photo
                   src={
                     profile_path
@@ -53,7 +53,7 @@ export default function Cast() {
                 />
                 <Text>{name}</Text>
                 <Text>Character: {character}</Text>
-              </li>
+              </ListItem>
             );
           })}
         </CreditsList>

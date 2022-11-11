@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 import { PopularMoviesList, StyledLink, Title } from './Trending.styled';
 import { KEY } from '../../components/service/api';
@@ -8,6 +9,7 @@ export default function Trending() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const location = useLocation();
 
   useEffect(() => {
     const url = `/trending/movie/day?api_key=${KEY}`;
@@ -36,7 +38,9 @@ export default function Trending() {
       <PopularMoviesList>
         {movies.map(({ id, title }) => (
           <li key={id}>
-            <StyledLink to={`movies/${id}`}>{title}</StyledLink>
+            <StyledLink to={`movies/${id}`} state={{ from: location }}>
+              {title}
+            </StyledLink>
           </li>
         ))}
       </PopularMoviesList>
