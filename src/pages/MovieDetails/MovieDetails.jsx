@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Suspense } from 'react';
 import { useEffect, useState } from 'react';
 import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
@@ -81,7 +82,9 @@ export default function MovieDetails() {
           </li>
         </AdditionalList>
       </AdditionalBox>
-      <Outlet />
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }

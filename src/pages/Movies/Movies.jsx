@@ -50,9 +50,7 @@ export default function Movies() {
     event.preventDefault();
 
     if (value.trim() === '') {
-      toast.error('Please, input a movie', {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      toast.error('Please, input a movie');
       return;
     }
     setSearchParams(value !== '' ? { query: value } : {});
